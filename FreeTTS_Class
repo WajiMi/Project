@@ -1,0 +1,30 @@
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+ 
+public class FreeTTS {
+	
+	/*Taken from http://moderntone.blogspot.com/2013/02/freetts-tutorial.html with slight edits.
+	 * Text to Speech Class below 
+	 */
+ 
+ private static final String VOICENAME = "mbrola_us1";
+ 
+ 		//string to speech
+ 	private String text; 
+ 
+ 	//constructor
+	public FreeTTS(String text) {
+    this.text = text;
+								}
+ 
+	
+		//Get voice using voice manager in FreeTTS 
+ public void speak() {
+  Voice voice;
+  VoiceManager voiceManager = VoiceManager.getInstance();
+  voice = voiceManager.getVoice(VOICENAME);
+  //OR it could be : voice=voiceManager.getVoice("mbrola_us1");
+  voice.allocate();
+  voice.speak(text);
+ }
+}
